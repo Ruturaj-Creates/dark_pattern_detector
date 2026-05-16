@@ -25,9 +25,10 @@ def scan_website(request: ScanRequest):
     )
 
     report = generate_report(
-        risk_score,
-        urgency_results,
-        scarcity_results
+    risk_score,
+    urgency_results,
+    scarcity_results,
+    request.url
     )
 
     return report

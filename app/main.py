@@ -21,7 +21,8 @@ risk_score = calculate_risk(
 report = generate_report(
     risk_score,
     urgency_results,
-    scarcity_results
+    scarcity_results,
+    url
 )
 
 saved_file = save_report(report)
