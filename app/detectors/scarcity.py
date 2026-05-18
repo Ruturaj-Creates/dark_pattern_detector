@@ -15,6 +15,6 @@ def detect_scarcity(text):
         matches = re.findall(pattern, text, re.IGNORECASE)
 
         if matches:
-            findings.extend(matches)
+            findings.extend(list(set(matches)))
 
     return findings
