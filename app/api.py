@@ -6,7 +6,16 @@ from app.detectors.urgency import detect_urgency
 from app.detectors.scarcity import detect_scarcity
 from app.risk_score import calculate_risk
 from app.report_generator import generate_report
+from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class ScanRequest(BaseModel):
     url: str
