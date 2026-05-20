@@ -6,22 +6,26 @@ from detectors.scarcity import detect_scarcity
 from risk_score import calculate_risk
 from report_generator import generate_report
 from save_report import save_report
-url = input("Enter URL: ")
+from detectors.cookie_trap import detect_cookie_trap
 
+url = input("Enter URL: ")
 html = fetch_page(url)
+cookie_results = detect_cookie_trap(html)
 
 urgency_results = detect_urgency(html)
 scarcity_results = detect_scarcity(html)
 
 risk_score = calculate_risk(
     urgency_results,
-    scarcity_results
+    scarcity_results,
+    cookie_results
 )
 
 report = generate_report(
     risk_score,
     urgency_results,
     scarcity_results,
+    cookie_results,
     url
 )
 

@@ -1,7 +1,13 @@
 from datetime import datetime
 import uuid
 
-def generate_report(risk_score, urgency_results, scarcity_results, url):
+def generate_report(
+    risk_score,
+    urgency_results,
+    scarcity_results,
+    cookie_findings,
+    url
+):
 
     report = {
         "scan_id": str(uuid.uuid4())[:8],
@@ -23,6 +29,13 @@ def generate_report(risk_score, urgency_results, scarcity_results, url):
             "type": "scarcity",
             "severity": "medium",
             "matches": scarcity_results
+        })
+
+    if cookie_findings:
+        report["patterns"].append({
+            "type": "cookie_trap",
+            "severity": "medium",
+            "matches": cookie_findings
         })
 
     return report
