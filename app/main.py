@@ -5,7 +5,7 @@ from detectors.urgency import detect_urgency
 from detectors.scarcity import detect_scarcity
 from risk_score import calculate_risk
 from report_generator import generate_report
-from save_report import save_report
+from app.utils.save_report import save_report
 from detectors.cookie_trap import detect_cookie_trap
 
 url = input("Enter URL: ")
